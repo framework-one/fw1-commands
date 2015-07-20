@@ -1,0 +1,33 @@
+{
+    "name" : "FW/1 Commands",
+    "slug" : "fw1-commands",
+    "version" : "0.1.0",
+    "author" : "Tony Junkes @cfchef",
+    "location" : "https://github.com/cfchef/fw1-commands/archive/master.zip",
+    "createPackageDirectory" : "true",
+    "packageDirectory" : "framework",
+    "packageDirectory" : "fw1",
+    "Homepage" : "https://github.com/cfchef/fw1-commands",
+    "Documentation" : "https://github.com/cfchef/fw1-commands/blob/master/README.md",
+    "Repository" : {
+        "type" : "git", "URL" : "https://github.com/cfchef/fw1-commands"
+    },
+    "Bugs" : "https://github.com/framework-one/fw1/issues",
+    "shortDescription" : "A collection of CommandBox commands for FW/1.",
+    "description" : "A collection of CommandBox commands for FW/1.",
+    "instructions" : "https://github.com/cfchef/fw1-commands/blob/master/README.md",
+    "changelog" : "https://github.com/framework-one/fw1-commands/commits/master",
+    "type" : "commandbox-commands",
+    "keywords" : [ "fw1", "framework one", "commandbox", "commands" ],
+    "private" : "false",
+    "engines" : [
+        { "type" : "railo", "version" : ">=4.1.x" },
+        { "type" : "lucee", "version" : ">=4.5.x" },
+        { "type" : "adobe", "version" : ">=9.0.2" }
+    ],
+    "License" : [
+        { "type" : "" }
+    ],
+    "Contributors" : [ {"name": "Contributors List", "url": "https://github.com/framework-one/fw1-commands/graphs/contributors"} ],
+    "ignore" : [ ]
+}
