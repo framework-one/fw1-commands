@@ -4,13 +4,12 @@
     "version" : "0.1.0",
     "author" : "Tony Junkes @cfchef",
     "location" : "https://github.com/cfchef/fw1-commands/archive/master.zip",
-    "createPackageDirectory" : "false",
-    "packageDirectory" : "framework",
+    "createPackageDirectory" : "true",
     "packageDirectory" : "fw1",
     "Homepage" : "https://github.com/cfchef/fw1-commands",
     "Documentation" : "https://github.com/cfchef/fw1-commands/blob/master/README.md",
     "Repository" : {
-        "type" : "git", "URL" : "https://github.com/cfchef/fw1-commands"
+        "type" : "git", "URL" : "https://github.com/cfchef/fw1-commands.git"
     },
     "Bugs" : "https://github.com/framework-one/fw1/issues",
     "shortDescription" : "A collection of CommandBox commands for FW/1.",
