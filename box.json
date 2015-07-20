@@ -4,7 +4,7 @@
     "version" : "0.1.0",
     "author" : "Tony Junkes @cfchef",
     "location" : "https://github.com/cfchef/fw1-commands/archive/master.zip",
-    "createPackageDirectory" : "false",
+    "createPackageDirectory" : true,
     "packageDirectory" : "fw1",
     "Homepage" : "https://github.com/cfchef/fw1-commands",
     "Documentation" : "https://github.com/cfchef/fw1-commands/blob/master/README.md",
@@ -28,5 +28,5 @@
         { "type" : "" }
     ],
     "Contributors" : [ {"name": "Contributors List", "url": "https://github.com/framework-one/fw1-commands/graphs/contributors"} ],
-    "ignore" : [ ]
+    "ignore" : [ "README.md" ]
 }
