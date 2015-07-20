@@ -4,7 +4,7 @@
     "version" : "0.1.0",
     "author" : "Tony Junkes @cfchef",
     "location" : "https://github.com/cfchef/fw1-commands/archive/master.zip",
-    "createPackageDirectory" : "true",
+    "createPackageDirectory" : "false",
     "packageDirectory" : "fw1",
     "Homepage" : "https://github.com/cfchef/fw1-commands",
     "Documentation" : "https://github.com/cfchef/fw1-commands/blob/master/README.md",
