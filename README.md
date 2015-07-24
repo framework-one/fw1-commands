@@ -20,11 +20,11 @@ A collection of commands to be used with CommandBox for working with FW/1
 - Basic (a bare bones setup for a single application) - `fw1 create app myApp basic`
 - Subsystem (a bare bones setup for a application with subsystems) - `fw1 create app myApp subsystem`
 
-##### Create Views
+#### Create Views
 
 `fw1 create view myView`
 
-##### Create Controllers
+#### Create Controllers
 
 `fw1 create controller myController default,add,edit,delete`
 
