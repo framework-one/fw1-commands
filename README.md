@@ -28,6 +28,10 @@ A collection of commands to be used with CommandBox for working with FW/1
 
 `fw1 create controller myController default,add,edit,delete`
 
+#### Create Layouts
+
+`fw1 create layout myLayout`
+
 ### A work in progress!
 
 This is all still being pieced together so some features may change and new features will be added so stay tuned!
