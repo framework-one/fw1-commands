@@ -1,7 +1,7 @@
 {
     "name" : "FW/1 Commands",
     "slug" : "fw1-commands",
-    "version" : "0.1.0",
+    "version" : "0.3.0",
     "author" : "Tony Junkes @cfchef",
     "location" : "https://github.com/cfchef/fw1-commands/archive/master.zip",
     "createPackageDirectory" : true,
@@ -19,11 +19,6 @@
     "type" : "commandbox-commands",
     "keywords" : [ "fw1", "framework one", "commandbox", "commands" ],
     "private" : "false",
-    "engines" : [
-        { "type" : "railo", "version" : ">=4.1.x" },
-        { "type" : "lucee", "version" : ">=4.5.x" },
-        { "type" : "adobe", "version" : ">=9.0.2" }
-    ],
     "License" : [
         { "type" : "" }
     ],
