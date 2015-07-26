@@ -1,9 +1,9 @@
-# fw1-commands
+# fw1-commands (v0.4.0)
 A collection of commands to be used with CommandBox for working with FW/1
 
 ### Installation
 
-- First of all, make sure you have CommandBox installed.
+- First of all, make sure you have [CommandBox installed](http://ortus.gitbooks.io/commandbox-documentation/content/setup/installation.html).
 - Open up your favorite terminal and enter `box install fw1-commands`.
 - Done! Super simple.
 
