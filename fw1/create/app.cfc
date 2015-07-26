@@ -39,12 +39,12 @@ component displayname="FW/1 Create Application Command"
 	}
 	
 	/**
-	* @name The name of the app being created.
-	* @skeleton The name of the app skeleton to generate.
+	* @name.hint The name of the app being created.
+	* @skeleton.hint The name of the app skeleton to generate.
 	* @skeleton.options Examples, Skeleton, Basic, Subsystem
-	* @directory The directory to create the app in. Defaults to current working directory.
-	* @installFW1 Install the latest stable version of FW/1 from ForgeBox.
-	* @package Generate a box.json to make the current directory a package.
+	* @directory.hint The directory to create the app in. Defaults to current working directory.
+	* @installFW1.hint Install the latest stable version of FW/1 from ForgeBox.
+	* @package.hint Generate a box.json to make the current directory a package.
 	*/
 	public void function run(
 		name = "My FW/1 App",

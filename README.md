@@ -32,6 +32,10 @@ A collection of commands to be used with CommandBox for working with FW/1
 
 `fw1 create layout myLayout`
 
+#### Create Subsystems
+
+`fw1 create subsystem mySubsystem`
+
 ### A work in progress!
 
 This is all still being pieced together so some features may change and new features will be added so stay tuned!
