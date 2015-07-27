@@ -28,6 +28,10 @@ A collection of commands to be used with CommandBox for working with FW/1
 
 `fw1 create controller myController default,add,edit,delete`
 
+#### Create Beans
+
+`fw1 create Bean MyBean`
+
 #### Create Layouts
 
 `fw1 create layout myLayout`
