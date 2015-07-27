@@ -30,7 +30,7 @@ A collection of commands to be used with CommandBox for working with FW/1
 
 #### Create Beans
 
-`fw1 create Bean MyBean`
+`fw1 create bean MyBean`
 
 #### Create Layouts
 
