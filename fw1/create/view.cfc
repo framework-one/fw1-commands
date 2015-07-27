@@ -21,8 +21,8 @@ component displayname="FW/1 Create View Command"
 	* @directory.hint The base directory to create your view in. Defaults to current working directory.
 	*/
 	public void function run(
-		required name,
-		directory = "views"
+		required string name,
+		string directory = "views"
 	) {
 		// This will make each directory canonical and absolute		
 		arguments.directory = fileSystemUtil.resolvePath( arguments.directory );

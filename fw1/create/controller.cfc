@@ -56,19 +56,19 @@ component displayname="FW/1 Create Controller Command"
 	}
 
 	/**
-	* @name.hint Name of the controller to create without the .cfc. For packages, specify name as 'myPackage/myController'
+	* @name.hint Name of the controller to create.
 	* @actions.hint A comma-delimited list of actions to generate
 	* @directory.hint The base directory to create your controller in. Defaults to 'controllers'.
 	* @views.hint Generate a view for each action.
-	* @viewsDirectory.hint The directory where your views are stored. Only used if views is set to true.
+	* @viewsDirectory.hint The directory where your views are stored.
 	* @open.hint Open the controller once generated.
 	*/
 	public void function run( 	
-		required name,
-		actions = "default",
-		directory = "controllers",
+		required string name,
+		string actions = "default",
+		string directory = "controllers",
 		boolean views = true,
-		viewsDirectory = "views",
+		string viewsDirectory = "views",
 		boolean open = false
 	) {
 		// This will make each directory canonical and absolute
@@ -87,7 +87,7 @@ component displayname="FW/1 Create Controller Command"
 			writeOutput( "component {" & ascii.br );
 			for ( var thisAction in actionArray ) {
 				index++;
-				writeOutput( ascii.tb & "public void function #thisAction#() {" & ascii.br );
+				writeOutput( ascii.tb & "public void function #thisAction#(struct rc = {}) {" & ascii.br );
 				writeOutput( ascii.tb2 & ascii.br );
 				writeOutput( ascii.tb & "}" );
 				if ( index != arrayLen( actionArray ) ) { writeOutput( ascii.br2 ) }
@@ -101,6 +101,6 @@ component displayname="FW/1 Create Controller Command"
 		file action="write" file="#controllerPath#" mode="777" output="#controllerContent#";
 		print.greenLine( "Created #controllerPath#" );
 		// Open file
-		if ( arguments.open ){ openPath( controllerPath ); }			
+		if ( arguments.open ){ openPath( controllerPath ); }	
 	}
 }

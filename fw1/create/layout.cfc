@@ -20,9 +20,8 @@ component displayname="FW/1 Create Layout Command"
 	* @directory.hint The base directory to create your layout in.
 	*/
 	public void function run( 	
-		required name,
-		boolean helper = false,
-		directory = "layouts" 
+		required string name,
+		string directory = "layouts" 
 	) {
 		// This will make each directory canonical and absolute		
 		arguments.directory = fileSystemUtil.resolvePath( arguments.directory );				

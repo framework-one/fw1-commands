@@ -29,7 +29,6 @@ component displayname="FW/1 Create Application Command"
 {
 	property name="packageService" inject="PackageService";
 	property name="parser" inject="Parser";
-	property name="skeletonLocation";
 	
 	public any function init() {
 		super.init();
@@ -47,9 +46,9 @@ component displayname="FW/1 Create Application Command"
 	* @package.hint Generate a box.json to make the current directory a package.
 	*/
 	public void function run(
-		name = "My FW/1 App",
-		skeleton = "Skeleton",
-		directory = getCWD(),
+		string name = "My FW/1 App",
+		string skeleton = "Skeleton",
+		string directory = getCWD(),
 		boolean installFW1 = false,
 		boolean package = true
 	) {

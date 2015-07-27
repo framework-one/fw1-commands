@@ -22,8 +22,8 @@ component displayname="FW/1 Create Subsystem Command"
 	* @directory.hint The directory to create the app in. Defaults to the subsystem name passed in.
 	*/
 	public void function run(
-		required name,
-		directory = getCWD()
+		required string name,
+		string directory = getCWD()
 	) {
 		var skeletonLocation = getDirectoryFromPath( getCurrentTemplatePath() )  & "/../resources/templates/";
 		// This will make the directory canonical and absolute
