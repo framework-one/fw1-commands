@@ -37,18 +37,6 @@ component displayname="FW/1 Create Bean Command"
 	extends="commandbox.system.BaseCommand"
 	excludeFromHelp=false
 {
-	public any function init() {
-		// ascii codes
-		variables.ascii = {
-			br = Chr(10) & Chr(13), // line break
-			br2 = Chr(10) & Chr(13) & Chr(10) & Chr(13), // line break 2x
-			tb = Chr(9), // tab
-			tb2 = Chr(9) & Chr(9), // tab 2x
-		};
-
-		return this;
-	}
-
 	/**
 	* @name.hint Name of the bean to create. For packages, specify name as 'myPackage/MyBean'
 	* @directory.hint The base directory to create your bean in. Defaults to 'beans'.
@@ -60,11 +48,12 @@ component displayname="FW/1 Create Bean Command"
 		boolean initialCaps = true,
 		boolean open = false
 	) {
+		// This will make each directory canonical and absolute
+		arguments.directory = fileSystemUtil.resolvePath( arguments.directory );
+		// Validate directory
+		if ( !directoryExists( arguments.directory ) ) { directoryCreate( arguments.directory ); }
+		// Generate beans
 		for ( var bean in listToArray( arguments.name ) ) {
-			// This will make each directory canonical and absolute
-			arguments.directory = fileSystemUtil.resolvePath( arguments.directory );
-			// Validate directory
-			if ( !directoryExists( arguments.directory ) ) { directoryCreate( arguments.directory ); }
 			// Allow dot-delimited paths
 			bean = replace( bean, ".", "/", "all" );
 			// Make bean name intital caps?
@@ -75,11 +64,11 @@ component displayname="FW/1 Create Bean Command"
 			print.line();
 			// Generate bean with init function
 			savecontent variable="beanContent" {
-				writeOutput( "component {" & ascii.br );
-				writeOutput( ascii.tb & "public #beanName# function init() {" & ascii.br );
-				writeOutput( ascii.tb2 & "return this;" & ascii.br );
-				writeOutput( ascii.tb & "}" );
-				writeOutput( ascii.br & "}" );
+				writeOutput( "component {" & cr );
+				writeOutput( chr(9) & "public #beanName# function init() {" & cr );
+				writeOutput( chr(9) & chr(9) & "return this;" & cr );
+				writeOutput( chr(9) & "}" );
+				writeOutput( cr & "}" );
 			}
 			var beanPath = "#arguments.directory#/#beanName#.cfc";
 			// Create dir if it doesn't exist

@@ -1,7 +1,7 @@
 {
     "name" : "FW/1 Commands",
     "slug" : "fw1-commands",
-    "version" : "0.4.0",
+    "version" : "0.4.1",
     "author" : "Tony Junkes @cfchef",
     "location" : "https://github.com/cfchef/fw1-commands/archive/master.zip",
     "createPackageDirectory" : true,

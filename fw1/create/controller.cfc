@@ -43,18 +43,6 @@ component displayname="FW/1 Create Controller Command"
 	extends="commandbox.system.BaseCommand"
 	excludeFromHelp=false
 {
-	public any function init() {
-		// ascii codes
-		variables.ascii = {
-			br = Chr(10) & Chr(13), // line break
-			br2 = Chr(10) & Chr(13) & Chr(10) & Chr(13), // line break 2x
-			tb = Chr(9), // tab
-			tb2 = Chr(9) & Chr(9), // tab 2x
-		};
-
-		return this;
-	}
-
 	/**
 	* @name.hint Name of the controller to create.
 	* @actions.hint A comma-delimited list of actions to generate
@@ -81,26 +69,45 @@ component displayname="FW/1 Create Controller Command"
 		// This help readability so the success messages aren't up against the previous command line
 		print.line();
 		// Generate controller with actions passed
-		savecontent variable="controllerContent" {
-			var index = 0;
-			var actionArray = listToArray( arguments.actions );
-			writeOutput( "component {" & ascii.br );
-			for ( var thisAction in actionArray ) {
-				index++;
-				writeOutput( ascii.tb & "public void function #thisAction#(struct rc = {}) {" & ascii.br );
-				writeOutput( ascii.tb2 & ascii.br );
-				writeOutput( ascii.tb & "}" );
-				if ( index != arrayLen( actionArray ) ) { writeOutput( ascii.br2 ) }
-			}
-			writeOutput( ascii.br & "}" );
-		}
+		var controllerContent = scaffoldController( arguments.name, listToArray( arguments.actions ) );
 		var controllerPath = "#arguments.directory#/#arguments.name#.cfc";
 		// Create dir if it doesn't exist
 		directoryCreate( getDirectoryFromPath( controllerPath ), true, true );
 		// Create files
 		file action="write" file="#controllerPath#" mode="777" output="#controllerContent#";
 		print.greenLine( "Created #controllerPath#" );
+		// Create views?
+		if ( arguments.views ) {
+			for ( var action in listToArray( arguments.actions ) ) {
+				var viewPath = arguments.viewsDirectory & "/" & arguments.name & "/" & action & ".cfm";
+				// Create dir if it doesn't exist
+				directoryCreate( getDirectoryFromPath( viewPath ), true, true );
+				// Create view
+				fileWrite( viewPath, "<cfoutput>#cr##chr(9)#<h1>#arguments.name#.#action#</h1>#cr#</cfoutput>" );
+				print.greenLine( "Created " & arguments.viewsDirectory & "/" & arguments.name & "/" & action & ".cfm" );
+			}
+		}
 		// Open file
 		if ( arguments.open ){ openPath( controllerPath ); }	
+	}
+
+	private string function scaffoldController(
+		required string name,
+		array actions = ["default"]
+	) {
+		savecontent variable="controller" {
+			var index = 0;
+			writeOutput( "component {" & cr );
+			for ( var action in arguments.actions ) {
+				index++;
+				writeOutput( chr(9) & "public void function #action#(struct rc = {}) {" & cr );
+				writeOutput( chr(9) & chr(9) & cr );
+				writeOutput( chr(9) & "}" );
+				if ( index != arrayLen( arguments.actions ) ) { writeOutput( cr & cr ) }
+			}
+			writeOutput( cr & "}" );
+		}
+
+		return controller;
 	}
 }
