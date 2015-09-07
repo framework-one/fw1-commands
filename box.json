@@ -3,18 +3,18 @@
     "slug" : "fw1-commands",
     "version" : "0.4.1",
     "author" : "Tony Junkes @cfchef",
-    "location" : "https://github.com/cfchef/fw1-commands/archive/master.zip",
+    "location" : "https://github.com/framework-one/fw1-commands/archive/master.zip",
     "createPackageDirectory" : true,
     "packageDirectory" : "",
-    "Homepage" : "https://github.com/cfchef/fw1-commands",
-    "Documentation" : "https://github.com/cfchef/fw1-commands/blob/master/README.md",
+    "Homepage" : "https://github.com/framework-one/fw1-commands",
+    "Documentation" : "https://github.com/framework-one/fw1-commands/blob/master/README.md",
     "Repository" : {
-        "type" : "git", "URL" : "https://github.com/cfchef/fw1-commands.git"
+        "type" : "git", "URL" : "https://github.com/framework-one/fw1-commands.git"
     },
     "Bugs" : "https://github.com/framework-one/fw1/issues",
     "shortDescription" : "A collection of CommandBox commands for FW/1.",
     "description" : "A collection of CommandBox commands for FW/1.",
-    "instructions" : "https://github.com/cfchef/fw1-commands/blob/master/README.md",
+    "instructions" : "https://github.com/framework-one/fw1-commands/blob/master/README.md",
     "changelog" : "https://github.com/framework-one/fw1-commands/commits/master",
     "type" : "commandbox-commands",
     "keywords" : [ "fw1", "framework one", "commandbox", "commands" ],
