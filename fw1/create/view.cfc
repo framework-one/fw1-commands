@@ -9,7 +9,7 @@
 * By default, the view will be created in /views but can be overridden.
 * .
 * {code:bash}
-* fw1 create view myView myDirectory
+* fw1 create view myView my/directory
 * {code}
 */
 component displayname="FW/1 Create View Command"

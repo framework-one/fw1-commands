@@ -1,4 +1,3 @@
-// BASED FROM THE COLDBOX "APP.CFC" COMMAND - https://github.com/Ortus-Solutions/commandbox/tree/master/src/cfml/commands/coldbox/create
 /**
 * Create a individual FW/1 subsystem skeleton structure.
 * .
@@ -10,7 +9,7 @@
 * but can be overridden.
 * .
 * {code:bash}
-* fw1 create subsystem mySubsystem myDirectory
+* fw1 create subsystem mySubsystem my/directory
 * {code}
 */
 component displayname="FW/1 Create Subsystem Command"
@@ -18,12 +17,12 @@ component displayname="FW/1 Create Subsystem Command"
 	excludeFromHelp=false
 {
 	/**
-	* @name.hint The name of the app being created.
-	* @directory.hint The directory to create the app in. Defaults to the subsystem name passed in.
+	* @name.hint The name of the subsystem being created.
+	* @directory.hint The directory to create the subsytem in. Defaults to the subsystem name passed in.
 	*/
 	public void function run(
 		required string name,
-		string directory = getCWD()
+		string directory = "subsystems"
 	) {
 		var skeletonLocation = getDirectoryFromPath( getCurrentTemplatePath() )  & "/../resources/templates/";
 		// This will make the directory canonical and absolute
@@ -36,7 +35,7 @@ component displayname="FW/1 Create Subsystem Command"
 		zip action="unzip" destination="#arguments.directory#/#arguments.name#" file="#skeletonLocation#SubsystemTemplate.zip";
 		// Success message
 		print.line().greenLine(
-			"#arguments.name# FW/1 subsystem successfully created in [#arguments.directory#]"
+			"#arguments.name# subsystem successfully created in [#arguments.directory#]"
 		);
 	}
 }
