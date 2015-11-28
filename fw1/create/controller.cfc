@@ -17,7 +17,7 @@
 * overridden.
 * .
 * {code:bash}
-* fw1 create controller myController default myDirectory
+* fw1 create controller myController default my/directory
 * {code}
 * .
 * Views are auto-generated in a /views folder by default but can be overridden.
@@ -29,7 +29,7 @@
 * The directory for the views can be overridden as well.
 * .
 * {code:bash}
-* fw1 create controller myController default controllers true myViews
+* fw1 create controller myController default controllers true my/views
 * {code}
 * .
 * Once created, the controller can be opened in your default editor by
@@ -65,11 +65,11 @@ component displayname="FW/1 Create Controller Command"
 		// Validate directory
 		if ( !directoryExists( arguments.directory ) ) { directoryCreate( arguments.directory ); }
 		// Allow dot-delimited paths
-		arguments.name = replace( arguments.name, ".", "/", "all" );
-		// This help readability so the success messages aren't up against the previous command line
+		arguments.name = arguments.name.replace( ".", "/", "all" );
+		// This helps readability so the success messages aren't up against the previous command line
 		print.line();
 		// Generate controller with actions passed
-		var controllerContent = scaffoldController( arguments.name, listToArray( arguments.actions ) );
+		var controllerContent = scaffoldController( arguments.name, arguments.actions.listToArray() );
 		var controllerPath = "#arguments.directory#/#arguments.name#.cfc";
 		// Create dir if it doesn't exist
 		directoryCreate( getDirectoryFromPath( controllerPath ), true, true );
@@ -78,14 +78,14 @@ component displayname="FW/1 Create Controller Command"
 		print.greenLine( "Created #controllerPath#" );
 		// Create views?
 		if ( arguments.views ) {
-			for ( var action in listToArray( arguments.actions ) ) {
-				var viewPath = arguments.viewsDirectory & "/" & arguments.name & "/" & action & ".cfm";
+			arguments.actions.listToArray().each(function(action) {
+				var viewPath = viewsDirectory & "/" & name & "/" & action & ".cfm";
 				// Create dir if it doesn't exist
 				directoryCreate( getDirectoryFromPath( viewPath ), true, true );
 				// Create view
-				fileWrite( viewPath, "<cfoutput>#cr##chr(9)#<h1>#arguments.name#.#action#</h1>#cr#</cfoutput>" );
-				print.greenLine( "Created " & arguments.viewsDirectory & "/" & arguments.name & "/" & action & ".cfm" );
-			}
+				fileWrite( viewPath, "<cfoutput>#cr##chr(9)#<h1>#name#.#action#</h1>#cr#</cfoutput>" );
+				print.greenLine( "Created " & viewsDirectory & "/" & name & "/" & action & ".cfm" );
+			});
 		}
 		// Open file
 		if ( arguments.open ){ openPath( controllerPath ); }	
@@ -96,15 +96,13 @@ component displayname="FW/1 Create Controller Command"
 		array actions = ["default"]
 	) {
 		savecontent variable="controller" {
-			var index = 0;
-			writeOutput( "component {" & cr );
-			for ( var action in arguments.actions ) {
-				index++;
+			writeOutput( 'component displayname="#arguments.name# controller" {' & cr );
+			arguments.actions.each(function(action, index) {
 				writeOutput( chr(9) & "public void function #action#(struct rc = {}) {" & cr );
 				writeOutput( chr(9) & chr(9) & cr );
 				writeOutput( chr(9) & "}" );
-				if ( index != arrayLen( arguments.actions ) ) { writeOutput( cr & cr ) }
-			}
+				if ( index != actions.len() ) { writeOutput( cr & cr ) }
+			});
 			writeOutput( cr & "}" );
 		}
 

@@ -8,7 +8,7 @@
 * By default, the layout will be created in /layouts but can be overridden.
 * .
 * {code:bash}
-* fw1 create layout myLayout myDirectory
+* fw1 create layout myLayout my/directory
 * {code}
 */
 component displayname="FW/1 Create Layout Command"

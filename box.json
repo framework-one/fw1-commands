@@ -1,8 +1,8 @@
 {
     "name" : "FW/1 Commands",
     "slug" : "fw1-commands",
-    "version" : "0.4.1",
-    "author" : "Tony Junkes @cfchef",
+    "version" : "1.0.0",
+    "author" : "Tony Junkes - @cfchef",
     "location" : "https://github.com/framework-one/fw1-commands/archive/master.zip",
     "createPackageDirectory" : false,
     "packageDirectory" : "",
@@ -11,7 +11,7 @@
     "Repository" : {
         "type" : "git", "URL" : "https://github.com/framework-one/fw1-commands.git"
     },
-    "Bugs" : "https://github.com/framework-one/fw1/issues",
+    "Bugs" : "https://github.com/framework-one/fw1-commands/issues",
     "shortDescription" : "A collection of CommandBox commands for FW/1.",
     "description" : "A collection of CommandBox commands for FW/1.",
     "instructions" : "https://github.com/framework-one/fw1-commands/blob/master/README.md",
@@ -20,7 +20,7 @@
     "keywords" : [ "fw1", "framework one", "commandbox", "commands" ],
     "private" : "false",
     "License" : [
-        { "type" : "" }
+        { "type" : "MIT" }
     ],
     "Contributors" : [ {"name": "Contributors List", "url": "https://github.com/framework-one/fw1-commands/graphs/contributors"} ],
     "ignore" : [ "README.md" ]
