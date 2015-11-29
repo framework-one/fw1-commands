@@ -23,5 +23,5 @@
         { "type" : "MIT" }
     ],
     "Contributors" : [ {"name": "Contributors List", "url": "https://github.com/framework-one/fw1-commands/graphs/contributors"} ],
-    "ignore" : [ "README.md" ]
+    "ignore" : [ "README.md", "LICENSE.txt" ]
 }
