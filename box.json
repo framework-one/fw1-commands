@@ -16,7 +16,7 @@
     "description" : "A collection of CommandBox commands for FW/1.",
     "instructions" : "https://github.com/framework-one/fw1-commands/blob/master/README.md",
     "changelog" : "https://github.com/framework-one/fw1-commands/commits/master",
-    "type" : "commandbox-commands",
+    "type" : "commandbox-modules",
     "keywords" : [ "fw1", "framework one", "commandbox", "commands" ],
     "private" : "false",
     "License" : [
