@@ -1,7 +1,7 @@
 {
     "name" : "FW/1 Commands",
     "slug" : "fw1-commands",
-    "version" : "1.0.0",
+    "version" : "2.0.0",
     "author" : "Tony Junkes - @cfchef",
     "location" : "https://github.com/framework-one/fw1-commands/archive/master.zip",
     "createPackageDirectory" : false,
@@ -23,5 +23,5 @@
         { "type" : "MIT" }
     ],
     "Contributors" : [ {"name": "Contributors List", "url": "https://github.com/framework-one/fw1-commands/graphs/contributors"} ],
-    "ignore" : [ "README.md" ]
+    "ignore" : [ "README.md", "LICENCE.txt" ]
 }

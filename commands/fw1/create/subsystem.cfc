@@ -13,9 +13,10 @@
 * {code}
 */
 component displayname="FW/1 Create Subsystem Command"
-	extends="commandbox.system.BaseCommand"
 	excludeFromHelp=false
 {
+	property name="settings" inject='commandbox:moduleSettings:fw1-commands';
+	
 	/**
 	* @name.hint The name of the subsystem being created.
 	* @directory.hint The directory to create the subsytem in. Defaults to the subsystem name passed in.
@@ -24,7 +25,7 @@ component displayname="FW/1 Create Subsystem Command"
 		required string name,
 		string directory = "subsystems"
 	) {
-		var skeletonLocation = getDirectoryFromPath( getCurrentTemplatePath() )  & "/../resources/templates/";
+		var templates = settings.resources.templates;
 		// This will make the directory canonical and absolute
 		arguments.directory = fileSystemUtil.resolvePath( arguments.directory );
 		// Validate directory, if it doesn't exist, create it
@@ -32,7 +33,7 @@ component displayname="FW/1 Create Subsystem Command"
 			directoryCreate( arguments.directory & "/" & arguments.name );
 		}
 		// Unzip the skeleton
-		zip action="unzip" destination="#arguments.directory#/#arguments.name#" file="#skeletonLocation#SubsystemTemplate.zip";
+		zip action="unzip" destination="#arguments.directory#/#arguments.name#" file="#templates#SubsystemTemplate.zip";
 		// Success message
 		print.line().greenLine(
 			"#arguments.name# subsystem successfully created in [#arguments.directory#]"

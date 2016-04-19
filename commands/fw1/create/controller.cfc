@@ -40,7 +40,6 @@
 * {code}
 */
 component displayname="FW/1 Create Controller Command"
-	extends="commandbox.system.BaseCommand"
 	excludeFromHelp=false
 {
 	/**
@@ -78,7 +77,7 @@ component displayname="FW/1 Create Controller Command"
 		print.greenLine( "Created #controllerPath#" );
 		// Create views?
 		if ( arguments.views ) {
-			arguments.actions.listToArray().each(function(action) {
+			arguments.actions.listToArray().each(function( action ) {
 				var viewPath = viewsDirectory & "/" & name & "/" & action & ".cfm";
 				// Create dir if it doesn't exist
 				directoryCreate( getDirectoryFromPath( viewPath ), true, true );
@@ -97,7 +96,7 @@ component displayname="FW/1 Create Controller Command"
 	) {
 		savecontent variable="controller" {
 			writeOutput( 'component displayname="#arguments.name# controller" {' & cr );
-			arguments.actions.each(function(action, index) {
+			arguments.actions.each(function( action, index ) {
 				writeOutput( chr(9) & "public void function #action#(struct rc = {}) {" & cr );
 				writeOutput( chr(9) & chr(9) & cr );
 				writeOutput( chr(9) & "}" );
