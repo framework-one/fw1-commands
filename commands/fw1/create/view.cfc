@@ -13,7 +13,6 @@
 * {code}
 */
 component displayname="FW/1 Create View Command"
-	extends="commandbox.system.BaseCommand"
 	excludeFromHelp=false
 {
 	/**

@@ -33,7 +33,6 @@
 * {code}
 */
 component displayname="FW/1 Create Bean Command"
-	extends="commandbox.system.BaseCommand"
 	excludeFromHelp=false
 {
 	/**
@@ -53,14 +52,14 @@ component displayname="FW/1 Create Bean Command"
 		// Validate directory
 		if ( !directoryExists( arguments.directory ) ) { directoryCreate( arguments.directory ); }
 		// Generate beans
-		arguments.name.listToArray().each(function(bean) {
+		arguments.name.listToArray().each(function( bean ) {
 			// Allow dot-delimited paths
 			bean = bean.replace( ".", "/", "all" );
 			// Make bean name intital caps?
 			var beanName = camelCase
 				? bean.listLast( "/" ).reReplace( "\b(\w)", "\u\1", "all" )
 				: bean.listLast( "/" );
-			// This help readability so the success messages aren't up against the previous command line
+			// This helps readability so the success messages aren't up against the previous command line
 			print.line();
 			// Generate bean with init function
 			savecontent variable="beanContent" {

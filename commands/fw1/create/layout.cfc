@@ -12,7 +12,6 @@
 * {code}
 */
 component displayname="FW/1 Create Layout Command"
-	extends="commandbox.system.BaseCommand"
 	excludeFromHelp=false
 {
 	/**
@@ -30,7 +29,7 @@ component displayname="FW/1 Create Layout Command"
 		// This help readability so the success messages aren't up against the previous command line
 		print.line();
 		// Default content to be generated in the layout
-		var layoutContent = "<h1>#arguments.name# Layout</h1>#CR#<cfoutput>##body##</cfoutput>";
+		var layoutContent = "<h1>#arguments.name# Layout</h1>#cr#<cfoutput>##body##</cfoutput>";
 		// Create layout
 		var layoutPath = "#arguments.directory#/#arguments.name#.cfm"; 
 		file action="write" file="#layoutPath#" mode="777" output="#layoutContent#";

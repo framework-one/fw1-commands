@@ -1,50 +1,43 @@
 /**
-* Create a new service in an existing FW/1 application.
+* Create a new Clojure service in an existing FW/1 application.
+* NOTE: This command assumes you are working in the base directory of
+* the Clojure application generated to work with FW/1!
 * .
 * {code:bash}
-* fw1 create service MyService
+* fw1 create service my-service
 * {code}
 * .
 * The command can also take a list of services to create.
 * .
 * {code:bash}
-* fw1 create service MyService,MyOtherService
+* fw1 create service my-service,my-other-service
 * {code}
 * .
-* By default, the service will be created in "/model/services" but can be
+* By default, the service will be created in "/services" but can be
 * overridden.
 * .
 * {code:bash}
-* fw1 create service MyService my/directory
-* {code}
-* .
-* Service file names are formatted as camel case.
-* This can be altered by setting camelCase to false.
-* .
-* {code:bash}
-* fw1 create service MyService /model/services false
+* fw1 create service my-service my/directory
 * {code}
 * .
 * Once created, the service can be opened in your default editor by
 * setting the "open" param to true.
 * .
 * {code:bash}
-* fw1 create service MyService --open
+* fw1 create service my-service --open
 * {code}
 */
-component displayname="FW/1 Create service Command"
-	extends="commandbox.system.BaseCommand"
+component displayname="FW/1 Create Clojure Service Command"
 	excludeFromHelp=false
 {
 	/**
-	* @name.hint Name of the service to create. For packages, specify name as 'my/package/MyService'
+	* @name.hint Name of the service to create. For packages, specify name as 'my/package/my-service'
 	* @directory.hint The base directory to create your service in. Defaults to 'services'.
 	* @open.hint Open the service once generated.
 	*/
 	public void function run( 	
 		required string name,
-		string directory = "model/services",
-		boolean camelCase = true,
+		string directory = "services",
 		boolean open = false
 	) {
 		// This will make each directory canonical and absolute
@@ -52,24 +45,20 @@ component displayname="FW/1 Create service Command"
 		// Validate directory
 		if ( !directoryExists( arguments.directory ) ) { directoryCreate( arguments.directory ); }
 		// Generate services
-		arguments.name.listToArray().each(function(service) {
+		arguments.name.listToArray().each(function( service ) {
 			// Allow dot-delimited paths
 			service = service.replace( ".", "/", "all" );
-			// Make service name intital caps?
-			var serviceName = camelCase
-				? service.listLast( "/" ).reReplace( "\b(\w)", "\u\1", "all" )
-				: service.listLast( "/" );
+			// Grab service name from possible package structure in name parameter
+			var serviceName = service.listLast( "/" );
 			// This helps readability so the success messages aren't up against the previous command line
 			print.line();
-			// Generate service with init function
+			// Generate service with dummy function
 			savecontent variable="serviceContent" {
-				writeOutput( 'component displayname="#serviceName# service" {' & cr );
-				writeOutput( chr(9) & "public #serviceName# function init() {" & cr );
-				writeOutput( chr(9) & chr(9) & "return this;" & cr );
-				writeOutput( chr(9) & "}" );
-				writeOutput( cr & "}" );
+				writeOutput( "(ns change-me-to-project-name.services.#serviceName#)" & cr & cr );
+				writeOutput( "(defn hello-world []" & cr );
+				writeOutput( chr(32) & chr(32) & '(str "Hello from #serviceName# service!"))' );
 			}
-			var servicePath = "#directory#/#serviceName#.cfc";
+			var servicePath = "#directory#/#service#.clj";
 			// Create dir if it doesn't exist
 			directoryCreate( getDirectoryFromPath( servicePath ), true, true );
 			// Create files

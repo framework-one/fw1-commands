@@ -29,7 +29,6 @@
 * {code}
 */
 component displayname="FW/1 Create Clojure Controller Command"
-	extends="commandbox.system.BaseCommand"
 	excludeFromHelp=false
 {
 	/**
@@ -69,7 +68,7 @@ component displayname="FW/1 Create Clojure Controller Command"
 		savecontent variable="controller" {
 			var index = 0;
 			writeOutput( "(ns change-me-to-project-name.controllers.#arguments.name#)" & cr & cr );
-			arguments.actions.each(function(action, index) {
+			arguments.actions.each(function( action, index ) {
 				writeOutput( "(defn #action# [rc]" & cr );
 				writeOutput( chr(32) & chr(32) & '(assoc rc :hello (str "Hello from #action#!")))' );
 				if ( index != actions.len() ) { writeOutput( cr & cr ) }
