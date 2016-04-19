@@ -4,8 +4,6 @@
     "version" : "2.0.0",
     "author" : "Tony Junkes - @cfchef",
     "location" : "https://github.com/framework-one/fw1-commands/archive/master.zip",
-    "createPackageDirectory" : false,
-    "packageDirectory" : "",
     "Homepage" : "https://github.com/framework-one/fw1-commands",
     "Documentation" : "https://github.com/framework-one/fw1-commands/blob/master/README.md",
     "Repository" : {
