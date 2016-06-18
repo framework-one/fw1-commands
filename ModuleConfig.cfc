@@ -5,7 +5,7 @@ component {
 				"skeletons": "#modulePath#/resources/skeletons/",
 				"templates": "#modulePath#/resources/templates/"
 			},
-			"version": "2.0.0"
+			"version": "2.1.0"
 		};
 	}
 

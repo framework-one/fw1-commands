@@ -33,12 +33,6 @@
 * fw1 create app myApp --installFW1
 * {code}
 * .
-* Use "serverConfig" to generate a pre-defined server.json.
-* .
-* {code:bash}
-* fw1 create app myApp --serverConfig
-* {code}
-* .
 * Use "startSever" to have CommandBox start a server that
 * will run your app after generation.
 * .
@@ -59,7 +53,6 @@ component displayname="FW/1 Create Application Command"
 	* @directory.hint The directory to create the app in. Defaults to current working directory.
 	* @installFW1.hint Install the latest stable version of FW/1 from ForgeBox.
 	* @package.hint Generate a box.json to make the current directory a package.
-	* @serverConfig.hint Generate a server.json to control how CommandBox starts a server for the app.
 	* @startServer.hint Have CommandBox start a server that will run your app after generation.
 	*/
 	public void function run(
@@ -68,9 +61,10 @@ component displayname="FW/1 Create Application Command"
 		string directory = getCWD(),
 		boolean package = true,
 		boolean installFW1 = false,
-		boolean serverConfig = false,
 		boolean startServer = false
 	) {
+		// Prevent any case issues with some Operating Systems
+		arguments.skeleton = arguments.skeleton.lCase();
 		// This will make the directory canonical and absolute
 		arguments.directory = fileSystemUtil.resolvePath( arguments.directory );
 		// Get the skeleton resource to use
@@ -95,19 +89,6 @@ component displayname="FW/1 Create Application Command"
 		// Install FW/1 from ForgeBox
 		if ( arguments.installFW1 ) {
 			command( "install" ).params( id = "fw1", directory = arguments.directory ).run();
-		}
-		// Create server.json
-		if ( arguments.serverConfig ) {
-			// Write server.json content and print success
-			savecontent variable="serverJson" {
-				writeOutput( '{' );
-			    writeOutput( cr & chr(9) & '"heapSize": "512",' );
-			    writeOutput( cr & chr(9) & '"host": "localhost",' );
-			    writeOutput( cr & chr(9) & '"rewritesEnable": false,' );
-				writeOutput( cr & '}' );
-			}
-			fileWrite( arguments.directory & "/server.json", serverJson );
-			print.line().greenLine( "Created server.json successfully." );
 		}
 		// Start a server to begin using generated app
 		if ( arguments.startServer ) { command( "server start" ).run(); }
