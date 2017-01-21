@@ -1,4 +1,4 @@
-# fw1-commands (v2.1.0)
+# FW/1 Commands
 ### A collection of CommandBox commands for working with FW/1
 
 ## Installation
